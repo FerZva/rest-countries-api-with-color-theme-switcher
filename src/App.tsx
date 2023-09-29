@@ -1,7 +1,10 @@
+import React from 'react';
+
 import  { useFetch }  from './services/useFetch';
 import { useState } from 'react';
 
 import { BsFillMoonFill } from "react-icons/bs";
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import CountryDetail from './components/CountryDetail';
 import CountryList from './components/CountryList';
@@ -17,7 +20,8 @@ function App() {
   const [selectedRegion, setSelectedRegion] = useState<string>('');
   
   return (
-    <body className="App">
+    <Router>
+      <body className="App">
       <Header>
         <h3>Where in the world?</h3>
 
@@ -52,20 +56,27 @@ function App() {
         {loading ? (
           <p>Cargando...</p>
         ) : (
-          <CountriesContainer>
+            <CountriesContainer>
               {countries.filter((country) => country.name.toLowerCase().includes(searchTerm.toLowerCase())).filter((country) => selectedRegion ? country.region === selectedRegion : true).map((country, index) => (
                 <CountriesDescriptionCard>
                   <Image key={index} src={country.flag} alt={`Flag of ${country.name}`} />
-                  <h3 key={index}>{country.name}</h3>
+                  <Link to="/"><h3 key={index}>{country.name}</h3></Link>
                   <li key={index}>{country.population}</li>
                   <li key={index}>{country.region}</li>
                   <li key={index}>{country.capital}</li>
                 </CountriesDescriptionCard>
               ))}
-          </CountriesContainer>
+
+              <Switch>
+                <Route path='/'>
+                  <CountryDetail />
+                </Route>
+              </Switch>
+            </CountriesContainer>
         )}
       
-    </body>
+      </body>
+    </Router>
   );
 }
 

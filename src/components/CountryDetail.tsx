@@ -73,7 +73,7 @@ type Currency = {
           </CountryInfoDetails>
 
         
-          
+
           <CountryBorders>
               <p>Border Countries:</p>
               {country.borders ? (

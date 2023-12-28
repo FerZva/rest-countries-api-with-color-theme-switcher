@@ -1,5 +1,5 @@
 import styled, { css  } from "styled-components";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Querys = css`
   @media screen and (max-width: 718px) {

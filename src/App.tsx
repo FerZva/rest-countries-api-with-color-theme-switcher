@@ -1,12 +1,10 @@
-import React from "react";
-
 import { useFetch } from "./services/useFetch";
 import { useState } from "react";
 
 import { BsFillMoonFill } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import styled, { ThemeProvider, StyleSheetManager } from 'styled-components';
+import { Route, Routes } from "react-router-dom";
+import { ThemeProvider, StyleSheetManager } from 'styled-components';
 
 import  { darkTheme }  from './Themes/Dark-style'
 import { lightTheme } from './Themes/Light-style'
@@ -31,18 +29,14 @@ import {
 } from "./styles/style";
 import "./styles/defaultStyles.css";
 
-interface ContainerProps {
-  isVisible: boolean;
-}
-
 function App() {
   const { countries, loading } = useFetch();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedRegion, setSelectedRegion] = useState<string>("");
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme] = useState(false);
   const [theme, setTheme] = useState(lightTheme);
   const [isListVisible, setIsListVisible] = useState(true); // Nuevo estado
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(true);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === darkTheme ? lightTheme : darkTheme));

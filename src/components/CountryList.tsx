@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Header, FilterContainer, CountriesContainer, CountriesDescriptionCard, Image,  } from '../styles/style'; // Importa tus estilos
+import { CountriesContainer, CountriesDescriptionCard, Image,  } from '../styles/style'; // Importa tus estilos
 
 import  { useFetch }  from '../services/useFetch';
 
 function CountryList() {
-  const { countries, loading } = useFetch(); // Reemplaza esto con tus datos
+  const { countries } = useFetch(); // Reemplaza esto con tus datos
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedRegion, setSelectedRegion] = useState<string>('');
 
